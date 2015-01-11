@@ -1,0 +1,56 @@
+body {
+    background-color: #2ba6cb;
+    font-family: Arial, Verdana;
+}
+
+label {
+	color: white;
+	font-weight: bold;
+}
+
+
+footer {
+	background-color: #333333;
+}
+
+#MLA {
+font-family: Baskerville, “Baskerville Old Face”, “Hoefler Text”, Garamond, “Times New Roman”, serif;
+/*	font-style: italic;*/
+/*	font-size: 25px;*/
+/*	font-weight: bold;*/
+}
+.button {
+	background-color: #FF4136;
+}
+.littlePaddingLeft {
+	padding-left: 1%;
+	font-size: 1.5em;
+}
+
+.setAlpha {
+	opacity: 0.95;
+}
+
+.setForm {
+	background-color: #39CCCC;
+	border-style: none;
+}
+
+.setResult {
+	background-color: #2ECC40;
+	border-style: none;
+}
+
+.setFont {
+	color: white !important;
+	font-family: Lucida Console, Courier New;
+}
+
+.setContact {
+	color: #FFFFFF;
+}
+
+.adustPadding {
+	padding-top: 1.5%;
+}
+

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html class="lt-ie10" lang="en" > <![endif]-->
+<html class="no-js" lang="en" ng-app="bibliographyApp">
+
+<head>
+  <meta charset="utf-8">
+  <!-- If you delete this meta tag World War Z will become a reality -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLA bibliography</title>
+
+  <!-- If you are using the CSS version, only link these 2 files, you may add app.css to use for your overrides if you like -->
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/foundation.css">
+
+  <!-- If you are using the gem version, you need this only -->
+  <link rel="stylesheet" href="css/app.css">
+
+  <script src="js/vendor/modernizr.js"></script>
+  <script src="js/vendor/angular.js"></script>
+  
+  <script src="js/foundation/foundation.topbar.js"></script>
+  <script src="js/bibliographyApp.js"></script>
+  <script>
+    $(document).foundation();
+  </script>
+
+  
+
+</head>
+<body ng-controller="bibliographyCtrl">
+  <div id="top"></div>
+    <div class="contain-to-grid fixed">
+        <nav class="top-bar" data-topbar>
+            <ul class="title-area">
+                <li class="name">
+                    <h1>
+                        <a href="#top"><span id="MLA">MLA</span> Bibliography</a>
+                    </h1>
+                </li>
+                <li class="toggle-topbar menu-icon">
+                  <a href="#">
+                    <span></span>
+                  </a>
+                </li>
+            </ul>
+            <section class="top-bar-section">
+                <!-- Right Nav Section -->
+                <ul id="nav" class="right">
+                    <li>
+                        <a href="#top">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#result">Result</a>
+                    </li>
+                </ul>
+            </section>
+        </nav>
+    </div>
+
+    <br>
+
+  <!-- <div class="row panel"></div> -->
+    <div class="row panel setAlpha setForm ">
+        <form>
+          <div class="row">
+            <label class="littlePaddingLeft">ARTICLE SOURCE</label>
+            <hr>
+            <div class="large-12 columns">
+              <label> Article Title
+                <input type="text" ng-model="data.ArticleTitle"/>
+              </label>
+            </div>
+          </div>
+
+          <br>
+          <br>
+
+          <div class="row">
+            <label class="littlePaddingLeft">ONLINE PUBLICATION INFO</label>
+            <hr>
+                <div class="large-4 columns">
+                <label> First Name
+                    <input type="text" ng-model="data.Contributors.First"/>  
+                </label>
+                </div>
+                <div class="large-4 columns">
+                    <label> Middle Name
+                        <input type="text" ng-model="data.Contributors.MI"/>
+                    </label>
+                </div>
+                <div class="large-4 columns">
+                    <label> Last Name
+                        <input type="text" ng-model="data.Contributors.Last"/>
+                    </label>
+                </div>
+          </div>
+
+          <br>
+          <br>
+
+          <div class="row">
+            <label class="littlePaddingLeft">CONTRIBUTORS</label>
+            <hr>
+                <div class="large-4 columns">
+                  <label> Website Title
+                    <input type="text" ng-model="data.WebsiteTitle"/>
+                  </label>
+                </div>
+                <div class="large-4 columns">
+                  <label> Publisher/Sponsor
+                    <input type="text" ng-model="data.PublisherOrSponsor"/>
+                  </label>
+                </div>
+                <div class="large-4 columns">
+                  <div class="row collapse">
+                    <label> URL
+                      <input type="text" ng-model="data.url"/>
+                    </label>
+                  </div>
+                </div>
+          </div>
+
+          <br>
+          <br>
+
+          <div class="row">
+              <label class="littlePaddingLeft">ELECTRONICALLY PUBLICATION DATE</label>
+              <hr>
+                <div class="large-4 columns">
+                <label> Day
+                    <select ng-model="publishedDateDay" ng-options="day for day in data.PublishedDate.day ">
+                         <option value="">-- choose a day --</option>
+                    </select>  
+                </label>
+                </div>
+                <div class="large-4 columns">
+                    <label> Month
+                        <select ng-model="publishedDateMonth" ng-options="month for month in data.PublishedDate.month ">
+                            <option value="">-- choose a Month --</option>
+                        </select> 
+                    </label>
+                </div>
+                <div class="large-4 columns">
+                    <label> Year
+                        <input type="text" ng-model="PublishedDateYear"/>
+                    </label>
+                </div>
+          </div>
+
+          <br>
+          <br>
+
+           <div class="row">
+              <label class="littlePaddingLeft">ACCESS DAY</label>
+              <hr>
+                <div class="large-4 columns">
+                <label> Day
+                    <select ng-model="AccessDateDay" ng-options="day for day in data.AccessDate.day ">
+                         <option value="">-- choose a day --</option>
+                    </select>  
+                </label>
+                </div>
+                <div class="large-4 columns">
+                    <label> Month
+                        <select ng-model="AccessDateMonth" ng-options="month for month in data.AccessDate.month ">
+                            <option value="">-- choose a Month --</option>
+                        </select> 
+                    </label>
+                </div>
+                <div class="large-4 columns">
+                    <label> Year
+                        <input type="text" ng-model="AccessDateYear"/>
+                    </label>
+                </div>
+         
+          </div>
+
+          <br>
+          <br>
+
+          <div class="row">
+            <div class="large-6 columns">
+              <label>Display URL</label>
+              <input type="radio" ng-model="data.DisplayURL" value="yes"><label>Yes</label>
+              <input type="radio" ng-model="data.DisplayURL" value="no"><label>No</label>
+            </div>
+          </div>
+
+          <div class="row">
+            <a href="#result" class="button right" ng-click="result = MLA(data)">MLA</a>
+          </div>
+        </form>
+    </div>
+
+
+    <div class="row setAlpha" id="result">
+        <div class="panel radius setResult">
+          <h5 class="setFont">YOUR BIBLIOGRAPHY:</h5>
+          <p class="setFont"> {{ result }}</p>
+        </div>
+    </div>
+
+  <footer>
+        <div id="contact">
+          <div class="copy">
+              <div class="row">
+                  <div class="large-12 columns">
+                      <div class="large-4 pull-1 columns text-center adustPadding">
+                          <p class="setContact">&copy; Copyright 
+                            <a href="mailto:tsengliwei@gmail.com" class="setContact">Li-Wei Tseng</a>.
+                          </p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </footer>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script>
+        $(document).foundation();
+    </script>
+    <script>
+        $(function() {
+            $('a[href*=#]:not([href=#])').click(function() {
+                if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+                    var target = $(this.hash);
+                    target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                    if (target.length) {
+                        $('html,body').animate({
+                            scrollTop: target.offset().top
+                        }, 1000);
+                        return false;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
